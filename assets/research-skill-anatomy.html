@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>shaper · fig.1 · /research skill anatomy</title>
+<style>
+  :root{ --bg:#ffffff; --ink:#000000; --soft:#d9d9d9; --hair:#ececec; --muted:#8a8a8a;
+    --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; --frame:1px; }
+  *{box-sizing:border-box;}
+  html,body{ margin:0; padding:0; width:1920px; height:1320px; background:var(--bg); color:var(--ink);
+    font-family:var(--mono); font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased; overflow:hidden; }
+  body{ display:grid; grid-template-rows:auto auto auto 1fr auto auto; padding:44px 60px; gap:20px; }
+  header{ display:grid; grid-template-columns:auto 1fr auto; gap:32px; align-items:baseline;
+    border-bottom:var(--frame) solid var(--ink); padding-bottom:14px; text-transform:lowercase; letter-spacing:0.04em; }
+  header .brand{font-weight:600; letter-spacing:0.18em; font-size:22px;}
+  header .crumb{color:var(--muted); font-size:14px;}
+  header .meta{color:var(--muted); font-size:13px; justify-self:end;}
+  header .meta b{color:var(--ink); font-weight:500; letter-spacing:0.08em;}
+  .caps{font-size:10px; text-transform:uppercase; letter-spacing:0.18em; color:var(--muted); font-weight:500;}
+  .trigger{ border:var(--frame) solid var(--ink); display:grid; grid-template-columns:auto 1fr; align-items:stretch; }
+  .trigger .lab{ background:var(--ink); color:var(--bg); padding:10px 16px; display:flex; align-items:center;
+    font-size:11px; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; white-space:nowrap; }
+  .trigger .body{padding:9px 16px; display:flex; flex-direction:column; gap:4px; justify-content:center;}
+  .trigger .row{display:flex; gap:8px; flex-wrap:wrap; align-items:center; font-size:12.5px;}
+  .chip{border:var(--frame) solid var(--soft); padding:1px 8px; letter-spacing:0.02em;}
+  .chip.k{background:var(--ink); color:var(--bg); border-color:var(--ink);}
+  .trigger .row .lead{color:var(--muted); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; margin-right:4px;}
+  .spine-wrap{position:relative;}
+  .spine-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;}
+  .spine-head .t{font-size:11px; text-transform:uppercase; letter-spacing:0.18em; color:var(--ink); font-weight:600;}
+  .spine-head .s{font-size:12px; color:var(--muted); letter-spacing:0.02em;}
+  .flow{display:flex; align-items:stretch; gap:0;}
+  .stage{ flex:1 1 0; min-width:0; border:var(--frame) solid var(--ink); padding:14px 12px 12px; position:relative;
+    display:flex; flex-direction:column; gap:5px; }
+  .stage .num{ position:absolute; top:-12px; left:12px; width:24px; height:24px; background:var(--ink); color:var(--bg);
+    border-radius:50%; display:grid; place-items:center; font-size:12px; font-weight:600; }
+  .stage h3{margin:0; font-size:13px; letter-spacing:0.01em; font-weight:500;}
+  .stage p{margin:0; font-size:11.5px; color:var(--muted); letter-spacing:0.01em; line-height:1.42;}
+  .stage .tool{font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); border-top:1px dashed var(--soft); padding-top:5px; margin-top:auto;}
+  .arrow{flex:0 0 30px; align-self:center; position:relative; height:1px; background:var(--ink);}
+  .arrow::after{content:""; position:absolute; right:-1px; top:-4.5px; width:0; height:0;
+    border-top:5px solid transparent; border-bottom:5px solid transparent; border-left:8px solid var(--ink);}
+  .band3{display:grid; grid-template-columns:1fr 1.28fr 1fr; gap:18px;}
+  .panel{border:var(--frame) solid var(--ink); padding:16px 16px 14px; position:relative; display:flex; flex-direction:column;}
+  .panel > .num{ position:absolute; top:-12px; left:14px; width:24px; height:24px; background:var(--ink); color:var(--bg);
+    border-radius:50%; display:grid; place-items:center; font-size:12px; font-weight:600; }
+  .panel h2{margin:0 0 3px; font-size:12px; text-transform:uppercase; letter-spacing:0.16em; font-weight:600;}
+  .panel .sub{font-size:11px; color:var(--muted); margin-bottom:10px; letter-spacing:0.02em;}
+  .rows{display:flex; flex-direction:column; gap:6px;}
+  .r{display:grid; grid-template-columns:auto 1fr; gap:10px; font-size:12.5px; align-items:baseline;}
+  .r .k{color:var(--ink); font-weight:500; white-space:nowrap;}
+  .r .v{color:var(--muted); text-align:right; letter-spacing:0.01em;}
+  .r.inv{background:var(--ink); color:var(--bg); padding:2px 8px; margin:0 -8px;}
+  .r.inv .k{color:var(--bg);} .r.inv .v{color:var(--bg);}
+  .grp{margin-top:11px;} .grp:first-child{margin-top:0;}
+  .grp .gt{font-size:10px; text-transform:uppercase; letter-spacing:0.16em; color:var(--muted); border-bottom:1px dashed var(--soft); padding-bottom:4px; margin-bottom:6px;}
+  .mono-list{display:flex; flex-direction:column; gap:3px; font-size:12px;}
+  .mono-list span b{font-weight:500;} .mono-list .c{color:var(--muted);}
+  .lenses{display:flex; gap:6px; flex-wrap:wrap; margin-top:9px;}
+  .lens{border:var(--frame) solid var(--soft); padding:1px 7px; font-size:10.5px; letter-spacing:0.04em; color:var(--ink);}
+  .axis{display:grid; grid-template-columns:auto 1fr; gap:6px 10px; font-size:12px; margin-bottom:8px;}
+  .axis .ax{font-weight:500;} .axis .val{color:var(--muted); text-align:right;}
+  .band-bot{display:grid; grid-template-columns:1.15fr 1fr 1fr; gap:18px;}
+  .presets{display:flex; gap:6px 6px; flex-wrap:wrap; margin-top:4px;}
+  .preset{border:var(--frame) solid var(--ink); padding:2px 9px; font-size:12px; letter-spacing:0.02em;}
+  .out{font-size:12px; color:var(--muted); line-height:1.55;} .out b{color:var(--ink); font-weight:500;}
+  .fb{display:flex; flex-direction:column; gap:7px; font-size:12px;}
+  .fb .line{display:grid; grid-template-columns:auto 1fr; gap:8px; align-items:baseline;}
+  .fb .g{font-size:12px; color:var(--ink);} .fb .c{color:var(--muted);}
+  .hand{display:flex; flex-direction:column; gap:4px; margin-top:9px; font-size:11.5px;}
+  .hand .h{display:grid; grid-template-columns:16px 1fr; gap:6px; color:var(--muted);} .hand .h b{color:var(--ink); font-weight:500;}
+  footer{ border-top:var(--frame) solid var(--ink); padding-top:12px; display:grid; grid-template-columns:1fr auto auto; gap:24px; align-items:center;
+    color:var(--muted); font-size:12px; letter-spacing:0.04em; }
+  footer .seeds{display:flex; gap:7px; align-items:center;}
+  footer .seeds .label{font-size:10px; text-transform:uppercase; letter-spacing:0.16em;}
+  footer .seed{border:var(--frame) solid var(--soft); padding:1px 8px;}
+  footer .seed.active{background:var(--ink); color:var(--bg); border-color:var(--ink);}
+  footer .stamp{justify-self:end;} footer .stamp small{color:var(--muted);}
+</style>
+</head>
+<body>
+  <header>
+    <div class="brand">shaper</div>
+    <div class="crumb">fig. 1 · /research · exa-first, evidence-graded research engine</div>
+    <div class="meta"><b>v3.1</b> · unified research skill · codex + claude</div>
+  </header>
+
+  <section class="trigger">
+    <div class="lab">trigger</div>
+    <div class="body">
+      <div class="row">
+        <span class="lead">invoke</span>
+        <span class="chip k">/research [topic]</span>
+        <span class="chip">quick:</span><span class="chip">scan:</span><span class="chip">deep:</span>
+        <span class="chip">update:</span><span class="chip">self-stack:</span>
+        <span class="c" style="color:var(--muted);font-size:11px">– syntax picks depth · body picks lens</span>
+      </div>
+      <div class="row">
+        <span class="lead">presets</span>
+        <span class="chip">aim</span><span class="chip">edtech</span><span class="chip">competitor</span><span class="chip">market</span><span class="chip">product</span><span class="chip">video</span><span class="chip">visual</span><span class="chip">people</span><span class="chip">photo</span><span class="chip">science</span><span class="chip">code</span><span class="chip">skill</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="spine-wrap">
+    <div class="spine-head">
+      <span class="t">the loop · how it works</span>
+      <span class="s">never one generic search – define · split · fan-out · fetch · grade · resolve · synthesize</span>
+    </div>
+    <div class="flow">
+      <article class="stage"><div class="num">1</div><h3>define question</h3><p>fix the concrete, bounded intent silently unless ambiguous</p><div class="tool">scope</div></article>
+      <div class="arrow"></div>
+      <article class="stage"><div class="num">2</div><h3>split → angles</h3><p>4–6 angles from the topic · deep uses 5 lenses</p><div class="tool">decompose</div></article>
+      <div class="arrow"></div>
+      <article class="stage"><div class="num">3</div><h3>query fan-out</h3><p>2–3 semantic queries per angle · dedupe by canonical url</p><div class="tool">exa · web_search</div></article>
+      <div class="arrow"></div>
+      <article class="stage"><div class="num">4</div><h3>fetch full</h3><p>pull 3–8 best urls in full – not just snippets</p><div class="tool">exa · web_fetch</div></article>
+      <div class="arrow"></div>
+      <article class="stage"><div class="num">5</div><h3>grade evidence</h3><p>source ledger + credibility firewall · authority × independence</p><div class="tool">firewall →</div></article>
+      <div class="arrow"></div>
+      <article class="stage"><div class="num">6</div><h3>resolve</h3><p>critic pass · hypotheses · delta-retrieve · keep genuine unknowns</p><div class="tool">contradictions</div></article>
+      <div class="arrow"></div>
+      <article class="stage"><div class="num">7</div><h3>synthesize</h3><p>cross-angle insight → decision + confidence + next steps</p><div class="tool">output ↓</div></article>
+    </div>
+  </section>
+
+  <section class="band3">
+    <article class="panel">
+      <div class="num">a</div>
+      <h2>modes · depth</h2>
+      <div class="sub">syntax prefix selects the pipeline intensity</div>
+      <div class="rows">
+        <div class="r"><span class="k">quick</span><span class="v">5–8 src · direct answer</span></div>
+        <div class="r"><span class="k">scan</span><span class="v">12–25 src · source map</span></div>
+        <div class="r inv"><span class="k">deep</span><span class="v">25–60 src · 3-cycle</span></div>
+        <div class="r"><span class="k">update</span><span class="v">fresh + temporal diff</span></div>
+        <div class="r"><span class="k">self-stack</span><span class="v">inspect · patch · sync</span></div>
+      </div>
+      <div class="grp">
+        <div class="gt">deep = 3 cycles</div>
+        <div class="mono-list">
+          <span><b>c1</b> broad search – 5 lenses</span>
+          <span><b>c2</b> critic + hypotheses + deep dives</span>
+          <span><b>c3</b> synthesis + numeric verification</span>
+        </div>
+        <div class="lenses">
+          <span class="lens">analytical</span><span class="lens">contrarian</span><span class="lens">mechanistic</span><span class="lens">systems</span><span class="lens">pragmatic</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="panel">
+      <div class="num">b</div>
+      <h2>tools · services it calls</h2>
+      <div class="sub">exa first · direct api only on escalation · secrets read from local config, never duplicated</div>
+      <div class="grp">
+        <div class="gt">exa mcp – practical loop</div>
+        <div class="mono-list">
+          <span><b>web_search_exa</b> <span class="c">· semantic search</span></span>
+          <span><b>web_fetch_exa</b> <span class="c">· full-page extraction</span></span>
+          <span><b>web_search_advanced_exa</b> <span class="c">· category · domain · date · highlights · subpages</span></span>
+        </div>
+      </div>
+      <div class="grp">
+        <div class="gt">direct exa api · on escalation</div>
+        <div class="mono-list">
+          <span><b>/search</b> <span class="c">instant · fast · deep-lite · deep · deep-reasoning</span></span>
+          <span><b>/agent/runs</b> <span class="c">async list-build + entity enrichment</span></span>
+          <span><b>/websets</b> <span class="c">persistent datasets (pro-gated)</span></span>
+          <span><b>/monitors</b> · <b>/context</b> · <b>/contents</b> <span class="c">watch · code · crawl+imageLinks</span></span>
+        </div>
+      </div>
+      <div class="grp">
+        <div class="gt">runtime plumbing</div>
+        <div class="mono-list">
+          <span><b>mcp wrapper</b> <span class="c">profiles core · research · agent · full</span></span>
+          <span><b>local mcp config</b> <span class="c">api key source · masked logs, never duplicated</span></span>
+          <span><b>sub-agents</b> <span class="c">only on explicit multi-agent ask</span></span>
+        </div>
+      </div>
+    </article>
+
+    <article class="panel">
+      <div class="num">c</div>
+      <h2>evidence firewall</h2>
+      <div class="sub">grade the claim, not the container</div>
+      <div class="axis">
+        <span class="ax">authority</span><span class="val">P / S / T</span>
+        <span class="ax">independence</span><span class="val">ind / int / unknown</span>
+        <span class="ax">sub-flags</span><span class="val">⚠vendor · manipulable</span>
+      </div>
+      <div class="rows">
+        <div class="r"><span class="k">echo-chain</span><span class="v">count chains, not citations</span></div>
+        <div class="r"><span class="k">confidence floor</span><span class="v">lone primary ≠ crushed</span></div>
+        <div class="r"><span class="k">vetting pass</span><span class="v">judge ≠ gatherer</span></div>
+        <div class="r"><span class="k">diversity</span><span class="v">no domain &gt; 25%</span></div>
+      </div>
+      <div class="grp">
+        <div class="gt">credibility gate – before ship</div>
+        <div class="mono-list">
+          <span>every load-bearing claim: ≥1 independent chain</span>
+          <span class="c">…or written as "X claims…" / ⚠uncorroborated</span>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="band-bot">
+    <article class="panel">
+      <div class="num">d</div>
+      <h2>domain adapters</h2>
+      <div class="sub">each preset merges default angles + A/B/C/D source hierarchy</div>
+      <div class="presets">
+        <span class="preset">aim</span><span class="preset">edtech</span><span class="preset">competitor</span><span class="preset">market</span><span class="preset">product</span><span class="preset">video</span><span class="preset">people</span><span class="preset">photo</span><span class="preset">science</span><span class="preset">code</span><span class="preset">visual</span><span class="preset">skill / visual-map</span>
+      </div>
+      <div class="grp">
+        <div class="gt">handoffs – beyond "what's true?"</div>
+        <div class="hand">
+          <div class="h"><span>→</span><span><b>attack-surface</b> · where is the market fragile</span></div>
+          <div class="h"><span>→</span><span><b>first-principles</b> · decompose the approach</span></div>
+          <div class="h"><span>→</span><span><b>ceo-council</b> · decision with research block</span></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="panel">
+      <div class="num">e</div>
+      <h2>outputs · stores</h2>
+      <div class="sub">shape depends on mode</div>
+      <div class="out">
+        <b>quick</b> → answer + sources + confidence + next steps<br>
+        <b>scan</b> → source map · angle findings · gaps<br>
+        <b>deep</b> → exec summary · source ledger · evidence map · claim ledger<br>
+        <b>update</b> → temporal diff + stability score<br>
+        <b>self-stack</b> → doc patch · synced mirrors · visual map
+      </div>
+      <div class="grp">
+        <div class="gt">save · only when asked / large</div>
+        <div class="mono-list">
+          <span>yaml frontmatter contract</span>
+          <span class="c">{project} {research} desc – YYYY-MM-DD.md · en-dash</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="panel">
+      <div class="num">f</div>
+      <h2>feedback loop</h2>
+      <div class="sub">discipline that keeps it honest</div>
+      <div class="fb">
+        <div class="line"><span class="g">◆</span><span><b>usage audit</b> after every call – tool · scope · cost · gaps</span></div>
+        <div class="line"><span class="g">◆</span><span><b>machine-readable ledger</b> – appended per call</span></div>
+        <div class="line"><span class="g">◆</span><span><b>verification searches</b> – criticism · limits · recency</span></div>
+        <div class="line"><span class="g">◆</span><span><b>cross-update sync</b> – ssot → mirrors</span></div>
+      </div>
+      <div class="grp">
+        <div class="gt">principle</div>
+        <div class="mono-list">
+          <span>separate research performed from research planned</span>
+          <span class="c">separate facts from inference · mark stale + uncertain</span>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <footer>
+    <div class="seeds">
+      <span class="label">modes</span>
+      <span class="seed">quick</span><span class="seed">scan</span><span class="seed active">deep</span><span class="seed">update</span><span class="seed">self-stack</span>
+    </div>
+    <div class="src">source · research/SKILL.md · methodology skill</div>
+    <div class="stamp">fig. 1 <small>· research engine · exa-first</small></div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>shaper · fig.s26 · как собирается лаба и её сайт</title>
+<style>
+  :root{ --bg:#fff; --ink:#000; --soft:#d9d9d9; --hair:#ececec; --muted:#8a8a8a;
+    --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; --frame:1px; }
+  *{box-sizing:border-box;}
+  html,body{ margin:0; padding:0; width:1920px; height:1080px; background:var(--bg); color:var(--ink);
+    font-family:var(--mono); font-size:16px; line-height:1.5; -webkit-font-smoothing:antialiased; overflow:hidden; }
+  body{ display:grid; grid-template-rows:auto 1fr auto; padding:44px 60px; gap:22px; }
+  header{ display:grid; grid-template-columns:auto 1fr auto; gap:32px; align-items:baseline;
+    border-bottom:var(--frame) solid var(--ink); padding-bottom:16px; text-transform:lowercase; letter-spacing:.04em; }
+  header .brand{ font-weight:600; letter-spacing:.18em; font-size:22px; }
+  header .crumb{ color:var(--muted); font-size:15px; }
+  header .meta{ color:var(--muted); font-size:13px; justify-self:end; }
+  header .meta b{ color:var(--ink); font-weight:500; letter-spacing:.08em; }
+  main{ display:grid; grid-template-rows:auto auto auto; gap:26px; align-content:start; }
+  .band-label{ font-size:11px; text-transform:uppercase; letter-spacing:.18em; color:var(--muted); margin:0 0 10px 2px; font-weight:500; }
+  .block{ border:var(--frame) solid var(--ink); padding:16px 18px 15px; position:relative; background:var(--bg); }
+  .block .num{ position:absolute; top:-12px; left:14px; width:24px; height:24px; background:var(--ink); color:var(--bg);
+    border-radius:50%; display:grid; place-items:center; font-size:12px; font-weight:600; }
+  .block h3{ margin:0; font-size:11px; text-transform:uppercase; letter-spacing:.16em; color:var(--muted); font-weight:500; }
+  .block .lead{ font-size:16px; margin-top:5px; letter-spacing:.01em; }
+  .block .sub{ font-size:12px; margin-top:6px; color:var(--muted); letter-spacing:.02em; line-height:1.55; }
+  .block.active{ background:var(--ink); color:var(--bg); }
+  .block.active h3{ color:var(--bg); opacity:.7; } .block.active .sub{ color:var(--bg); opacity:.72; }
+  .block.active .num{ background:var(--bg); color:var(--ink); }
+  .sources{ display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+  .rail{ display:grid; grid-template-columns:1fr 34px 1fr 34px 1fr 34px 1fr 34px 1fr; align-items:stretch; gap:0 6px; }
+  .rail .block{ display:flex; flex-direction:column; }
+  .arrow{ display:grid; place-items:center; } .arrow svg{ width:34px; height:20px; }
+  .systems{ display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
+  .tag{ border:var(--frame) solid var(--soft); padding:11px 13px; }
+  .tag .k{ font-size:11px; text-transform:uppercase; letter-spacing:.14em; color:var(--ink); font-weight:500; }
+  .tag .v{ font-size:12px; color:var(--muted); margin-top:5px; letter-spacing:.02em; line-height:1.5; }
+  .feed-note{ font-size:11px; color:var(--muted); letter-spacing:.06em; margin-top:9px; text-align:center; }
+  .journey{ display:grid; grid-template-columns:repeat(6,1fr); gap:0; border:var(--frame) solid var(--ink); }
+  .stage{ padding:13px 15px 14px; border-right:var(--frame) solid var(--soft); position:relative; }
+  .stage:last-child{ border-right:0; }
+  .stage.active{ background:var(--ink); color:var(--bg); }
+  .stage .n{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+  .stage.active .n{ color:var(--bg); opacity:.7; }
+  .stage .t{ font-size:15px; margin-top:5px; letter-spacing:.01em; }
+  .stage .d{ font-size:11px; color:var(--muted); margin-top:5px; letter-spacing:.03em; }
+  .stage.active .d{ color:var(--bg); opacity:.72; }
+  .arc{ margin-top:10px; font-size:13px; letter-spacing:.05em; color:var(--ink); text-align:center; } .arc .m{ color:var(--muted); }
+  .connector-note{ font-size:11px; color:var(--muted); letter-spacing:.06em; margin:2px 0 0 2px; }
+  footer{ border-top:var(--frame) solid var(--ink); padding-top:14px;
+    display:grid; grid-template-columns:1fr auto auto; gap:26px; align-items:center; color:var(--muted); font-size:13px; letter-spacing:.04em; }
+  footer .seeds{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  footer .seeds .label{ font-size:11px; text-transform:uppercase; letter-spacing:.16em; margin-right:4px; }
+  footer .seed{ border:var(--frame) solid var(--soft); padding:3px 9px; font-size:12px; color:var(--ink); letter-spacing:.03em; }
+  footer .seed.active{ background:var(--ink); color:var(--bg); border-color:var(--ink); }
+  footer .src{ justify-self:end; } footer .stamp{ color:var(--ink); } footer .stamp small{ color:var(--muted); font-weight:400; }
+</style>
+</head>
+<body>
+  <header>
+    <div class="brand">shaper</div>
+    <div class="crumb">fig. s26 · как собирается лаба и её сайт</div>
+    <div class="meta"><b>ai mindset</b> · summer lab s26 {flow}</div>
+  </header>
+  <main>
+    <section>
+      <p class="band-label">источник · один источник правды</p>
+      <div class="sources">
+        <article class="block"><div class="num">a</div><h3>vault · ssot</h3>
+          <div class="lead">obsidian knowledge base</div>
+          <div class="sub">программа, методология, карточки сессий, ресёрч. markdown + wikilinks + frontmatter = граф знаний.</div></article>
+        <article class="block"><div class="num">b</div><h3>skill · дирижёр</h3>
+          <div class="lead">один скилл на лабу · фазы 0–5</div>
+          <div class="sub">не хранилище, а оркестратор: читает vault → роутит в календарь, визуал, координацию, задачи.</div></article>
+      </div>
+      <p class="connector-note">↓ &nbsp; vault + скилл питают релизный рельс и связанные системы</p>
+    </section>
+    <section>
+      <p class="band-label">релизный рельс · как правка доходит до сайта</p>
+      <div class="rail">
+        <article class="block"><div class="num">1</div><h3>program studio</h3><div class="lead">структура + ревизии</div><div class="sub">операционная правда программы</div></article>
+        <div class="arrow"><svg viewBox="0 0 34 20"><line x1="2" y1="10" x2="27" y2="10" stroke="#000" stroke-width="1.3"/><path d="M27,5 L33,10 L27,15 Z" fill="#000"/></svg></div>
+        <article class="block"><div class="num">2</div><h3>mirror + release</h3><div class="lead">generated note</div><div class="sub">obsidian mirror + неизменяемый релиз-бандл</div></article>
+        <div class="arrow"><svg viewBox="0 0 34 20"><line x1="2" y1="10" x2="27" y2="10" stroke="#000" stroke-width="1.3"/><path d="M27,5 L33,10 L27,15 Z" fill="#000"/></svg></div>
+        <article class="block"><div class="num">3</div><h3>cms draft</h3><div class="lead">reviewed контент</div><div class="sub">черновик для публикации</div></article>
+        <div class="arrow"><svg viewBox="0 0 34 20"><line x1="2" y1="10" x2="27" y2="10" stroke="#000" stroke-width="1.3"/><path d="M27,5 L33,10 L27,15 Z" fill="#000"/></svg></div>
+        <article class="block"><div class="num">4</div><h3>site build</h3><div class="lead">design-preview</div><div class="sub">noindex до гейта</div></article>
+        <div class="arrow"><svg viewBox="0 0 34 20"><line x1="2" y1="10" x2="27" y2="10" stroke="#000" stroke-width="1.3"/><path d="M27,5 L33,10 L27,15 Z" fill="#000"/></svg></div>
+        <article class="block active"><div class="num">5</div><h3>publish · human gate</h3><div class="lead">s26.aimindset.org</div><div class="sub">деплой только после явного ok. человек = финальная приёмка.</div></article>
+      </div>
+    </section>
+    <section>
+      <p class="band-label">связанные системы · питают дирижёра и студию</p>
+      <div class="systems">
+        <div class="tag"><div class="k">календарь</div><div class="v">публичное расписание сессий когорты</div></div>
+        <div class="tag"><div class="k">память</div><div class="v">кросс-сессионные наблюдения + локальный поиск</div></div>
+        <div class="tag"><div class="k">задачи</div><div class="v">трекер этапов лабы (координация команды)</div></div>
+        <div class="tag"><div class="k">design lab</div><div class="v">визуальные итерации сайта → review</div></div>
+        <div class="tag"><div class="k">визуал</div><div class="v">плашки, обложки, карточки · flow-жёлтый</div></div>
+      </div>
+      <p class="feed-note">↑ &nbsp; каждая система читается/пишется скиллом; ни одна не обновляет сайт в обход человеческого гейта</p>
+    </section>
+    <section>
+      <p class="band-label">путь участника · 10–31 августа</p>
+      <div class="journey">
+        <div class="stage active"><div class="n">open prep</div><div class="t">3 открытых эфира</div><div class="d">публичная сборка программы вживую</div></div>
+        <div class="stage"><div class="n">pre-lab</div><div class="t">онбординг</div><div class="d">видео + входной документ · сбор контекста</div></div>
+        <div class="stage"><div class="n">w1</div><div class="t">зачем · контекст · состояние</div><div class="d">карта жизни + context layer</div></div>
+        <div class="stage"><div class="n">w2</div><div class="t">агенты · люди</div><div class="d">agent loop ×2 + карта делегирования</div></div>
+        <div class="stage"><div class="n">w3</div><div class="t">форма · ship</div><div class="d">рабочий инструмент / карта / протокол</div></div>
+        <div class="stage"><div class="n">demo day</div><div class="t">до / после</div><div class="d">публичный показ + план внедрения</div></div>
+      </div>
+      <div class="arc">зачем <span class="m">→</span> контекст <span class="m">→</span> состояние <span class="m">→</span> агенты <span class="m">→</span> люди <span class="m">→</span> форма</div>
+    </section>
+  </main>
+  <footer>
+    <div class="seeds"><span class="label">шесть элементов</span>
+      <span class="seed">зачем</span><span class="seed active">контекст</span><span class="seed">состояние</span><span class="seed">агенты</span><span class="seed">люди</span><span class="seed">форма</span></div>
+    <div class="stamp">fig. s26 <small>· schematic · lab assembly machine</small></div>
+    <div class="src">source · s26.aimindset.org</div>
+  </footer>
+</body>
+</html>

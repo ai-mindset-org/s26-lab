@@ -1,0 +1,67 @@
+/* ─────────────────────────────────────────────────────────────
+   shaper.css · shared visual grammar for s26-lab artifacts
+   b&w technical-manual / patent-drawing language.
+   every diagram in this repo links (or inlines) these tokens so the
+   whole knowledge base reads as one system.
+   see STYLE.md for the full convention.
+   ───────────────────────────────────────────────────────────── */
+
+:root{
+  /* surface */
+  --bg:#ffffff;      /* paper white — never off-white */
+  --ink:#000000;     /* pure black */
+  /* greys — only three */
+  --soft:#d9d9d9;    /* dividers, dashed borders */
+  --hair:#ececec;    /* subtle fills, hovers */
+  --muted:#8a8a8a;   /* secondary text, micro-labels */
+  /* type + geometry */
+  --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --frame:1px;
+  --gutter:22px;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:var(--mono); font-size:16px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  text-transform:lowercase;
+}
+
+/* header / footer frame */
+.shaper-header{
+  display:grid; grid-template-columns:auto 1fr auto; gap:32px; align-items:baseline;
+  border-bottom:var(--frame) solid var(--ink); padding-bottom:16px;
+  letter-spacing:.04em;
+}
+.shaper-header .brand{ font-weight:600; letter-spacing:.18em; font-size:22px; }
+.shaper-header .crumb{ color:var(--muted); font-size:15px; }
+.shaper-header .meta{ color:var(--muted); font-size:13px; justify-self:end; }
+.shaper-header .meta b{ color:var(--ink); font-weight:500; letter-spacing:.08em; }
+
+.shaper-footer{
+  border-top:var(--frame) solid var(--ink); padding-top:14px;
+  color:var(--muted); font-size:13px; letter-spacing:.04em;
+}
+
+/* numbered block — the core composition unit */
+.block{ border:var(--frame) solid var(--ink); padding:16px 18px 15px; position:relative; background:var(--bg); }
+.block .num{
+  position:absolute; top:-12px; left:14px; width:24px; height:24px;
+  background:var(--ink); color:var(--bg); border-radius:50%;
+  display:grid; place-items:center; font-size:12px; font-weight:600;
+}
+.block h3{ margin:0; font-size:11px; text-transform:uppercase; letter-spacing:.16em; color:var(--muted); font-weight:500; }
+.block .lead{ font-size:16px; margin-top:5px; }
+.block .sub{ font-size:12px; margin-top:6px; color:var(--muted); line-height:1.55; }
+
+/* inversion = active / current state (never colour, never bold) */
+.active{ background:var(--ink); color:var(--bg); }
+.active .num{ background:var(--bg); color:var(--ink); }
+
+/* caps micro-label */
+.caps{ font-size:11px; text-transform:uppercase; letter-spacing:.18em; color:var(--muted); font-weight:500; }
+
+/* the single sanctioned accent: s26 flow yellow, used in dots only */
+:root{ --flow:#e9b400; }
