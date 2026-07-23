@@ -50,6 +50,20 @@ web_search  →  web_fetch  →  advanced_search
 
 **Tool discipline:** search first, then fetch the most important URLs in full — do not rely on snippets alone. Do not invent tools your provider does not have. Read secrets from your local config; never hardcode or duplicate keys in the skill. Use sub-agents/parallelism only when explicitly asked.
 
+## Provider routing (2026)
+
+Route by the **shape of the deliverable**, not one default tool. These are different output shapes, not competitors on one axis:
+
+| Need | Provider shape | Example |
+|------|----------------|---------|
+| clean passages an agent reasons over | **semantic search API** | [Exa](https://exa.ai/docs) `web_search` |
+| one synthesized, cited answer | **answer engine** | [Perplexity](https://docs.perplexity.ai) |
+| peer-reviewed / "what does the science say" | **academic search** | [Consensus](https://consensus.app) |
+| verified structured *list* of N entities, kept fresh | **agentic list-building** | [Exa Websets](https://exa.ai/docs/websets/api-guide) · [Parallel FindAll](https://docs.parallel.ai) |
+| open-ended question → structured cited report | **deep-research task API** | Parallel Task, Exa deep |
+
+Classic Google/Bing are the underlying index; agent-native APIs exist because raw SERP JSON is the wrong shape to reason over. Prefer providers that return per-field citations + confidence, so the evidence pass has something concrete to grade.
+
 ---
 
 ## Query strategy
@@ -107,6 +121,17 @@ Improve the research system itself (skill body, tool routes, config, visual map)
 
 ---
 
+## Council / round-table lens (judgment calls only)
+
+For decisions with **no single right answer** (positioning, prioritization, tradeoffs), run a **council**: several models or personas answer independently, cross-review, and a chairman synthesizes. Pattern after Karpathy's [llm-council](https://github.com/karpathy/llm-council): (1) parallel independent answers; (2) **anonymized** cross-ranking (strips brand/self-preference); (3) one chairman synthesis. It is parallel opinion + ranking, not iterative debate.
+
+Discipline (the literature is mixed — these are what separate signal from noise):
+- **Judgment calls, not facts.** Route verifiable questions to a single pass + citation check; debate on solved-answer tasks burns 2–4× tokens for equal-or-worse accuracy.
+- **Force structural disagreement, not a label.** Give roles genuinely different *stated success criteria* (not just job titles); anonymize cross-review; instruct "note where you disagree" / "be very unconvinced." Label-only personas measurably underperform, sometimes worse than none.
+- **Read the disagreements**, not just the polished synthesis. A lone persuasive-but-wrong voice can drag group accuracy down — keep an adversarial chair.
+
+---
+
 ## Evidence ledger + source-credibility firewall
 
 The core mistake this prevents: **grading the container, not the claim — reading production polish as authority.**
@@ -118,7 +143,7 @@ Grade every source on **two independent axes**, then judge the claim separately:
 - **Sub-flags:** `⚠vendor` (interested first-party) · `manipulable` (Reddit/G2/Trustpilot/App-Store reviews — never an independent chain alone).
 - **First-party-data carve-out:** raw first-party numbers are **Primary regardless of author interest**; the Interested flag attaches to the *interpretation*, not the raw data.
 
-**Echo-chain rule:** two sources tracing to the same PR / dataset / wire story = **one** chain. Agreement across *opposing-interest* parties counts as near-independent (strong).
+**Echo-chain rule:** two sources tracing to the same PR / dataset / wire story = **one** chain. Agreement across *opposing-interest* parties counts as near-independent (strong). **Corroboration counts originating sources, not URLs** — ten sites repeating one press release is one chain. And more searching is not more reliable: claim-level accuracy can *drop* as tool-call volume rises (information overload), so breadth is not a proxy for truth. Run the firewall as a **separate pass before synthesis** — models don't spontaneously apply their own fabrication-detection while drafting.
 
 **Confidence floor by independence:**
 
