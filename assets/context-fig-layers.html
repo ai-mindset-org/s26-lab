@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<title>shaper · fig.lay · хранение слоями · слой добавляется только когда предыдущий начал жать</title><style>
+  :root{ --bg:#fff; --ink:#000; --soft:#d9d9d9; --hair:#ececec; --muted:#8a8a8a; --flow:#e9b400;
+    --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; --frame:1px; }
+  *{box-sizing:border-box;}
+  html,body{ margin:0; padding:0; width:1600px; background:var(--bg); color:var(--ink);
+    font-family:var(--mono); font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+  body{ padding:38px 52px 30px; text-transform:lowercase; }
+  header{ display:grid; grid-template-columns:auto 1fr auto; gap:28px; align-items:baseline;
+    border-bottom:var(--frame) solid var(--ink); padding-bottom:14px; letter-spacing:.04em; margin-bottom:22px; }
+  header .brand{ font-weight:600; letter-spacing:.18em; font-size:20px; }
+  header .crumb{ color:var(--muted); font-size:14px; }
+  header .meta{ color:var(--muted); font-size:12px; justify-self:end; }
+  header .meta b{ color:var(--ink); font-weight:500; letter-spacing:.08em; }
+  .band{ margin-bottom:22px; }
+  .band-label{ font-size:10.5px; text-transform:uppercase; letter-spacing:.18em; color:var(--muted);
+    margin:0 0 9px 2px; font-weight:500; }
+  .row{ display:grid; gap:14px; }
+  .block{ border:var(--frame) solid var(--ink); padding:14px 15px 12px; position:relative; background:var(--bg); }
+  .block .num{ position:absolute; top:-11px; left:12px; width:22px; height:22px; background:var(--ink); color:var(--bg);
+    border-radius:50%; display:grid; place-items:center; font-size:11px; font-weight:600; }
+  .block h3{ margin:0; font-size:10px; text-transform:uppercase; letter-spacing:.16em; color:var(--muted); font-weight:500; }
+  .block .lead{ font-size:15.5px; margin-top:5px; }
+  .block .note{ font-size:12px; color:var(--muted); margin-top:6px; line-height:1.45; }
+  .block.active{ background:var(--ink); color:var(--bg); }
+  .block.active h3,.block.active .note{ color:var(--soft); }
+  .block.active .num{ background:var(--bg); color:var(--ink); }
+  .block.dash{ border-style:dashed; border-color:var(--muted); }
+  .flow{ text-align:center; font-size:12px; color:var(--muted); letter-spacing:.1em; margin:9px 0 0; }
+  .tbl{ border:var(--frame) solid var(--ink); display:grid; }
+  .tbl div{ padding:8px 12px; border-right:var(--frame) solid var(--soft); font-size:13px; }
+  .tbl div:last-child{ border-right:none; }
+  .tbl .hd{ background:var(--hair); font-size:10px; text-transform:uppercase; letter-spacing:.15em; color:var(--muted); }
+  .tbl .rh{ color:var(--muted); font-size:12px; letter-spacing:.05em; }
+  .tbl .inv{ background:var(--ink); color:var(--bg); }
+  .tbl .br{ border-top:var(--frame) solid var(--soft); }
+  footer{ display:grid; grid-template-columns:1fr auto; align-items:baseline; gap:22px;
+    border-top:var(--frame) solid var(--ink); padding-top:12px; margin-top:6px;
+    color:var(--muted); font-size:12px; letter-spacing:.05em; }
+  footer b{ color:var(--ink); font-weight:500; }
+  .chips{ display:inline-flex; gap:6px; margin-left:10px; }
+  .chips span{ border:var(--frame) solid var(--soft); padding:1px 7px; font-size:11px; }
+  .chips span.on{ background:var(--ink); color:var(--bg); border-color:var(--ink); }
+</style></head><body>
+<header><span class="brand">shaper</span>
+<span class="crumb">fig.lay · хранение слоями · слой добавляется только когда предыдущий начал жать</span>
+<span class="meta">guide/ · <b>ai mindset</b> · 2026-07-30</span></header>
+<div class="band"><p class="band-label">порядок · строить всё сразу — самый дорогой способ бросить на середине</p><div class="row" style="grid-template-columns:repeat(6,1fr)"><div class="block active"><span class="num">1</span><h3>сразу</h3><div class="lead">один документ</div><div class="note">пятнадцать минут, один источник, один вывод</div></div><div class="block "><span class="num">2</span><h3>файлов больше десятка</h3><div class="lead">хранилище + имена</div><div class="note">версионирование и договор об именах</div></div><div class="block "><span class="num">3</span><h3>решения повторяются</h3><div class="lead">правила отдельно</div><div class="note">правило живёт не в заметке</div></div><div class="block "><span class="num">4</span><h3>не помнишь оснований</h3><div class="lead">журнал решений</div><div class="note">почему, а не только что</div></div><div class="block "><span class="num">5</span><h3>около сотни документов</h3><div class="lead">поиск по смыслу</div><div class="note">поиск по словам перестал попадать</div></div><div class="block "><span class="num">6</span><h3>работа длиннее захода</h3><div class="lead">чекпоинты сессий</div><div class="note">состояние переживает перерыв</div></div></div></div><p class="flow">→ каждый слой имеет цену обслуживания · слой, который не мешает жить, не нужен</p><div class="band"><p class="band-label">симптом перехода · по чему понятно, что пора</p><div class="row" style="grid-template-columns:1fr 1fr 1fr"><div class="block "><h3>слой 1 → 2</h3><div class="lead">«где я это записал»</div><div class="note">материал есть, найти нельзя</div></div><div class="block "><h3>слой 3 → 4</h3><div class="lead">«почему я так решил»</div><div class="note">выбор помнишь, основания нет</div></div><div class="block "><h3>слой 4 → 5</h3><div class="lead">«точно писал, но не ищется»</div><div class="note">формулировка была другая</div></div></div></div><div class="band"><p class="band-label">развернёт раздел</p><div class="row" style="grid-template-columns:1fr"><div class="block dash"><h3>ветка jarvis/guide-layers</h3><div class="lead">александр васильев · бесперебойник</div><div class="note">восьмимесячный след эволюции контура · механика каждого перехода · раздел «что не сработало» с ценой</div></div></div></div>
+<footer><span>разделы гайда<span class="chips"><span class="">старт</span><span class="">источники</span><span class="on">слои</span><span class="">волт</span><span class="">грабли</span><span class="">безопасность</span><span class="">примеры</span></span></span>
+<span><b>guide/03-layers.md</b></span></footer>
+</body></html>
