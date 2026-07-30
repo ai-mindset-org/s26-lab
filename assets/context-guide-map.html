@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>shaper · fig.ctx · как собирается личный контекст</title>
+<style>
+  :root{ --bg:#fff; --ink:#000; --soft:#d9d9d9; --hair:#ececec; --muted:#8a8a8a; --flow:#e9b400;
+    --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; --frame:1px; }
+  *{box-sizing:border-box;}
+  html,body{ margin:0; padding:0; width:1920px; height:1080px; background:var(--bg); color:var(--ink);
+    font-family:var(--mono); font-size:16px; line-height:1.5; -webkit-font-smoothing:antialiased; overflow:hidden; }
+  body{ display:grid; grid-template-rows:auto 1fr auto; padding:44px 60px; gap:20px; text-transform:lowercase; }
+
+  header{ display:grid; grid-template-columns:auto 1fr auto; gap:32px; align-items:baseline;
+    border-bottom:var(--frame) solid var(--ink); padding-bottom:16px; letter-spacing:.04em; }
+  header .brand{ font-weight:600; letter-spacing:.18em; font-size:22px; }
+  header .crumb{ color:var(--muted); font-size:15px; }
+  header .meta{ color:var(--muted); font-size:13px; justify-self:end; }
+  header .meta b{ color:var(--ink); font-weight:500; letter-spacing:.08em; }
+
+  main{ display:grid; grid-template-rows:auto auto auto auto; gap:20px; align-content:start; }
+  .band-label{ font-size:11px; text-transform:uppercase; letter-spacing:.18em; color:var(--muted);
+    margin:0 0 9px 2px; font-weight:500; }
+
+  .row{ display:grid; gap:16px; }
+  .r5{ grid-template-columns:repeat(5,1fr); }
+  .r4{ grid-template-columns:repeat(4,1fr); }
+  .r3{ grid-template-columns:1.15fr 1fr 1fr; }
+
+  .block{ border:var(--frame) solid var(--ink); padding:15px 16px 13px; position:relative; background:var(--bg); }
+  .block .num{ position:absolute; top:-12px; left:13px; width:24px; height:24px; background:var(--ink); color:var(--bg);
+    border-radius:50%; display:grid; place-items:center; font-size:12px; font-weight:600; }
+  .block h3{ margin:0; font-size:10.5px; text-transform:uppercase; letter-spacing:.16em; color:var(--muted); font-weight:500; }
+  .block .lead{ font-size:16px; margin-top:5px; letter-spacing:.01em; }
+  .block .note{ font-size:12.5px; color:var(--muted); margin-top:7px; line-height:1.45; }
+  .block.active{ background:var(--ink); color:var(--bg); }
+  .block.active h3, .block.active .note{ color:var(--soft); }
+  .block.active .num{ background:var(--bg); color:var(--ink); }
+
+  .arrows{ display:grid; grid-template-columns:repeat(5,1fr); align-items:center; height:16px; }
+  .arrows span{ position:relative; }
+  .arrows span::after{ content:""; position:absolute; left:50%; top:50%; width:calc(100% - 0px); height:1px;
+    background:var(--soft); transform:translate(0,-50%); }
+  .arrows span:last-child::after{ display:none; }
+  .arrows i{ position:absolute; left:calc(100% - 6px); top:50%; transform:translateY(-50%);
+    width:0; height:0; border-left:6px solid var(--soft); border-top:4px solid transparent; border-bottom:4px solid transparent; }
+
+  .gate{ border:var(--frame) solid var(--ink); display:grid; grid-template-columns:150px repeat(3,1fr); }
+  .gate div{ padding:9px 13px; border-right:var(--frame) solid var(--soft); font-size:13.5px; }
+  .gate div:last-child{ border-right:none; }
+  .gate .hd{ background:var(--hair); font-size:10.5px; text-transform:uppercase; letter-spacing:.15em; color:var(--muted); }
+  .gate .rowhd{ color:var(--muted); font-size:12.5px; letter-spacing:.06em; }
+  .gate .no{ background:var(--ink); color:var(--bg); }
+  .gate .brdr{ border-top:var(--frame) solid var(--soft); }
+
+  .split{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .stack{ border:var(--frame) solid var(--ink); padding:0; }
+  .stack .ttl{ padding:9px 14px; border-bottom:var(--frame) solid var(--ink); font-size:10.5px;
+    text-transform:uppercase; letter-spacing:.16em; color:var(--muted); }
+  .stack ol{ margin:0; padding:10px 14px 12px 34px; font-size:13.5px; line-height:1.85; }
+  .stack ol li::marker{ color:var(--muted); font-size:11.5px; }
+  .stack .dot{ display:inline-block; width:5px; height:5px; background:var(--flow); border-radius:50%;
+    vertical-align:middle; margin-left:7px; }
+
+  footer{ display:grid; grid-template-columns:1fr auto; align-items:baseline; gap:24px;
+    border-top:var(--frame) solid var(--ink); padding-top:13px; color:var(--muted); font-size:12.5px; letter-spacing:.05em; }
+  footer b{ color:var(--ink); font-weight:500; }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="brand">shaper</span>
+  <span class="crumb">fig.ctx · как собирается личный контекст · s26 {flow} · элемент 2 дуги</span>
+  <span class="meta">guide/ · <b>ai mindset</b> · 2026-07-30</span>
+</header>
+
+<main>
+
+  <section>
+    <p class="band-label">маршрут · слой добавляется только когда предыдущий начал жать</p>
+    <div class="row r5">
+      <div class="block active"><span class="num">1</span>
+        <h3>15 минут</h3>
+        <div class="lead">один источник</div>
+        <div class="note">один файл, один вывод. без волта и без архитектуры. начинают здесь всегда</div>
+      </div>
+      <div class="block"><span class="num">2</span>
+        <h3>дальше</h3>
+        <div class="lead">карта источников</div>
+        <div class="note">живой запрос против локального ядра. шесть поведений вместо счёта файлов</div>
+      </div>
+      <div class="block"><span class="num">3</span>
+        <h3>когда жмёт</h3>
+        <div class="lead">слои хранения</div>
+        <div class="note">файл → хранилище → правила → решения → смысловой поиск → чекпоинты</div>
+      </div>
+      <div class="block"><span class="num">4</span>
+        <h3>объём</h3>
+        <div class="lead">волт</div>
+        <div class="note">тип в имени, не в дереве. четыре способа найти. границы контуров</div>
+      </div>
+      <div class="block"><span class="num">5</span>
+        <h3>сквозное</h3>
+        <div class="lead">безопасность</div>
+        <div class="note">гейт на паре тип × глубина. обезличивание как подъём к механике</div>
+      </div>
+    </div>
+    <div class="arrows">
+      <span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span></span>
+    </div>
+  </section>
+
+  <section>
+    <p class="band-label">гейт доступа · решение принимается про глубину, а не про факт</p>
+    <div class="gate">
+      <div class="hd">контур</div>
+      <div class="hd">поверхность</div>
+      <div class="hd">глубоко</div>
+      <div class="hd">уязвимо</div>
+
+      <div class="rowhd brdr">публичное</div>
+      <div class="brdr">можно</div>
+      <div class="brdr">с оговоркой</div>
+      <div class="no brdr">никогда</div>
+
+      <div class="rowhd brdr">команда</div>
+      <div class="brdr">можно</div>
+      <div class="brdr">можно</div>
+      <div class="no brdr">никогда</div>
+
+      <div class="rowhd brdr">локально</div>
+      <div class="brdr">можно</div>
+      <div class="brdr">можно</div>
+      <div class="brdr">можно</div>
+    </div>
+  </section>
+
+  <section>
+    <p class="band-label">почему маршрут такой · ретроспектива контекстной лабы, декабрь 2025</p>
+    <div class="split">
+      <div class="stack">
+        <div class="ttl">покрытие запросов участников</div>
+        <ol>
+          <li>творческая визуализация — 95%</li>
+          <li>рефлексия года — 90%</li>
+          <li>фреймворки рефлексии — 85%</li>
+          <li>собственная система контекста — 60% <span class="dot"></span></li>
+          <li>вход для новичка — 50% <span class="dot"></span></li>
+          <li>практика с инструментом — 30% <span class="dot"></span></li>
+        </ol>
+      </div>
+      <div class="stack">
+        <div class="ttl">что сказала лаба о себе — и что из этого следует</div>
+        <ol>
+          <li>«много вдохновения, мало hands-on практики»</li>
+          <li>«разрыв между демо систем и что делать новичку»</li>
+          <li>«многие хотят инструмент, но не умеют»</li>
+          <li>отсюда: гайд начинается с 15 минут <span class="dot"></span></li>
+          <li>отсюда: архитектура идёт четвёртой, не первой</li>
+          <li>отсюда: раздел граблей обязателен</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="band-label">что говорили участники контекстной лабы · до месяца работы и после</p>
+    <div class="row r4">
+      <div class="block"><span class="num">6</span>
+        <h3>на входе · запрос</h3>
+        <div class="lead">«структурировать мои контексты»</div>
+        <div class="note">«чтобы дальше с ними легко и эффективно работать» — серийный предприниматель</div>
+      </div>
+      <div class="block"><span class="num">7</span>
+        <h3>на входе · боль</h3>
+        <div class="lead">«не интегрировал пока что»</div>
+        <div class="note">«пробовал вести записи» — инструмент есть, системы нет. портрет читателя гайда</div>
+      </div>
+      <div class="block"><span class="num">8</span>
+        <h3>на входе · состояние</h3>
+        <div class="lead">«жонглирование на канате»</div>
+        <div class="note">«информационный перегруз, отчаянное» — консультант. с этого места и начинают</div>
+      </div>
+      <div class="block active"><span class="num">9</span>
+        <h3>после · перелом</h3>
+        <div class="lead">«доставать из тетрадки и делать»</div>
+        <div class="note">«перестать записывать идеи в тетрадку» — руководитель исследований. сдвиг от сбора к действию</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>пополняемый гайд · пишут проводники, участники и агенты · вход через форк и pull request</span>
+  <span><b>github.com/ai-mindset-org/s26-lab</b> · guide/</span>
+</footer>
+
+</body>
+</html>
