@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<title>shaper · fig.exm · примеры · с чем приходят и как выглядит собранное</title><style>
+  :root{ --bg:#fff; --ink:#000; --soft:#d9d9d9; --hair:#ececec; --muted:#8a8a8a; --flow:#e9b400;
+    --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; --frame:1px; }
+  *{box-sizing:border-box;}
+  html,body{ margin:0; padding:0; width:1600px; background:var(--bg); color:var(--ink);
+    font-family:var(--mono); font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+  body{ padding:38px 52px 30px; text-transform:lowercase; }
+  header{ display:grid; grid-template-columns:auto 1fr auto; gap:28px; align-items:baseline;
+    border-bottom:var(--frame) solid var(--ink); padding-bottom:14px; letter-spacing:.04em; margin-bottom:22px; }
+  header .brand{ font-weight:600; letter-spacing:.18em; font-size:20px; }
+  header .crumb{ color:var(--muted); font-size:14px; }
+  header .meta{ color:var(--muted); font-size:12px; justify-self:end; }
+  header .meta b{ color:var(--ink); font-weight:500; letter-spacing:.08em; }
+  .band{ margin-bottom:22px; }
+  .band-label{ font-size:10.5px; text-transform:uppercase; letter-spacing:.18em; color:var(--muted);
+    margin:0 0 9px 2px; font-weight:500; }
+  .row{ display:grid; gap:14px; }
+  .block{ border:var(--frame) solid var(--ink); padding:14px 15px 12px; position:relative; background:var(--bg); }
+  .block .num{ position:absolute; top:-11px; left:12px; width:22px; height:22px; background:var(--ink); color:var(--bg);
+    border-radius:50%; display:grid; place-items:center; font-size:11px; font-weight:600; }
+  .block h3{ margin:0; font-size:10px; text-transform:uppercase; letter-spacing:.16em; color:var(--muted); font-weight:500; }
+  .block .lead{ font-size:15.5px; margin-top:5px; }
+  .block .note{ font-size:12px; color:var(--muted); margin-top:6px; line-height:1.45; }
+  .block.active{ background:var(--ink); color:var(--bg); }
+  .block.active h3,.block.active .note{ color:var(--soft); }
+  .block.active .num{ background:var(--bg); color:var(--ink); }
+  .block.dash{ border-style:dashed; border-color:var(--muted); }
+  .flow{ text-align:center; font-size:12px; color:var(--muted); letter-spacing:.1em; margin:9px 0 0; }
+  .tbl{ border:var(--frame) solid var(--ink); display:grid; }
+  .tbl div{ padding:8px 12px; border-right:var(--frame) solid var(--soft); font-size:13px; }
+  .tbl div:last-child{ border-right:none; }
+  .tbl .hd{ background:var(--hair); font-size:10px; text-transform:uppercase; letter-spacing:.15em; color:var(--muted); }
+  .tbl .rh{ color:var(--muted); font-size:12px; letter-spacing:.05em; }
+  .tbl .inv{ background:var(--ink); color:var(--bg); }
+  .tbl .br{ border-top:var(--frame) solid var(--soft); }
+  footer{ display:grid; grid-template-columns:1fr auto; align-items:baseline; gap:22px;
+    border-top:var(--frame) solid var(--ink); padding-top:12px; margin-top:6px;
+    color:var(--muted); font-size:12px; letter-spacing:.05em; }
+  footer b{ color:var(--ink); font-weight:500; }
+  .chips{ display:inline-flex; gap:6px; margin-left:10px; }
+  .chips span{ border:var(--frame) solid var(--soft); padding:1px 7px; font-size:11px; }
+  .chips span.on{ background:var(--ink); color:var(--bg); border-color:var(--ink); }
+  .dot{ display:inline-block; width:5px; height:5px; background:var(--flow); border-radius:50%;
+    vertical-align:middle; margin-left:6px; }
+</style></head><body>
+<header><span class="brand">shaper</span>
+<span class="crumb">fig.exm · примеры · с чем приходят и как выглядит собранное</span>
+<span class="meta">guide/ · <b>ai mindset</b> · 2026-07-30</span></header>
+<div class="band"><p class="band-label">четыре запроса · повторялись почти дословно у разных людей</p><div class="row" style="grid-template-columns:repeat(4,1fr)"><div class="block "><span class="num">1</span><h3>на структуру</h3><div class="lead">накопил и не могу пользоваться</div><div class="note">точнее звучит вторая формулировка — «встроить гигиену». контекст без обновления протухает быстрее, чем накапливается</div></div><div class="block "><span class="num">2</span><h3>на инструмент</h3><div class="lead">инструмент есть, привычки нет</div><div class="note">у одного материала нет, у второго четыре тысячи заметок. обоим не хватает одного — способа доставать</div></div><div class="block "><span class="num">3</span><h3>на разгрузку</h3><div class="lead">жонглирование, стоя на канате</div><div class="note">здесь контекст нужен самому человеку: увидеть прожитое. план он помнит и без выгрузки</div></div><div class="block "><span class="num">4</span><h3>на артефакт</h3><div class="lead">разговоры в карты и артефакты</div><div class="note">самый зрелый тип: человек уже знает, что контекст — сырьё, и спрашивает про конвейер</div></div></div></div><div class="band"><p class="band-label">рабочий набор · пять файлов вместо структуры папок</p><div class="row" style="grid-template-columns:repeat(5,1fr)"><div class="block active"><h3>обо мне</h3><div class="lead">кто я, чем занят, что важно сейчас</div><div class="note">три блока: строка идентичности, текущий контур с датами, границы. длиннее двух предложений — ещё не написана</div></div><div class="block "><h3>части</h3><div class="lead">повторяющиеся состояния и реакции</div><div class="note">то, что срабатывает раз за разом</div></div><div class="block "><h3>правила памяти</h3><div class="lead">что помнить, что забывать</div><div class="note">каждое правило — с моментом срабатывания</div></div><div class="block "><h3>рельсы решений</h3><div class="lead">как принимаю решения, где стоп</div><div class="note">границы названы заранее, до момента выбора</div></div><div class="block "><h3>подготовка к разговору</h3><div class="lead">срез под конкретную встречу</div><div class="note">собирается под задачу, живёт недолго</div></div></div></div><p class="flow">каждый файл отвечает на вопрос, который агенту нужен до ответа · папка не отвечает ни на один<span class="dot"></span></p><div class="band"><p class="band-label">правило работает только с триггером · проверка одна</p><div class="row" style="grid-template-columns:1fr 1fr"><div class="block "><h3>пожелание</h3><div class="lead">«помнить о моих приоритетах»</div><div class="note">момент, в который оно должно сработать, назвать нельзя</div></div><div class="block active"><h3>правило</h3><div class="lead">«перед планированием недели — сверить с текущим контуром и назвать вслух, что выпадает»</div><div class="note">момент назван, поэтому срабатывает без участия памяти</div></div></div></div>
+<footer><span>разделы гайда<span class="chips"><span class="">старт</span><span class="">источники</span><span class="">слои</span><span class="">волт</span><span class="">грабли</span><span class="">безопасность</span><span class="on">примеры</span><span class="">поколения</span><span class="">гейты</span><span class="">отказы</span></span></span>
+<span><b>guide/07-examples.md</b></span></footer>
+</body></html>
