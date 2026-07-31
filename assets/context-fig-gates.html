@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<title>shaper · fig.gat · механика срабатывания · что происходит в секунду, когда контекст нужен</title><style>
+  :root{ --bg:#fff; --ink:#000; --soft:#d9d9d9; --hair:#ececec; --muted:#8a8a8a; --flow:#e9b400;
+    --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; --frame:1px; }
+  *{box-sizing:border-box;}
+  html,body{ margin:0; padding:0; width:1600px; background:var(--bg); color:var(--ink);
+    font-family:var(--mono); font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased; }
+  body{ padding:38px 52px 30px; text-transform:lowercase; }
+  header{ display:grid; grid-template-columns:auto 1fr auto; gap:28px; align-items:baseline;
+    border-bottom:var(--frame) solid var(--ink); padding-bottom:14px; letter-spacing:.04em; margin-bottom:22px; }
+  header .brand{ font-weight:600; letter-spacing:.18em; font-size:20px; }
+  header .crumb{ color:var(--muted); font-size:14px; }
+  header .meta{ color:var(--muted); font-size:12px; justify-self:end; }
+  header .meta b{ color:var(--ink); font-weight:500; letter-spacing:.08em; }
+  .band{ margin-bottom:22px; }
+  .band-label{ font-size:10.5px; text-transform:uppercase; letter-spacing:.18em; color:var(--muted);
+    margin:0 0 9px 2px; font-weight:500; }
+  .row{ display:grid; gap:14px; }
+  .block{ border:var(--frame) solid var(--ink); padding:14px 15px 12px; position:relative; background:var(--bg); }
+  .block .num{ position:absolute; top:-11px; left:12px; width:22px; height:22px; background:var(--ink); color:var(--bg);
+    border-radius:50%; display:grid; place-items:center; font-size:11px; font-weight:600; }
+  .block h3{ margin:0; font-size:10px; text-transform:uppercase; letter-spacing:.16em; color:var(--muted); font-weight:500; }
+  .block .lead{ font-size:15.5px; margin-top:5px; }
+  .block .note{ font-size:12px; color:var(--muted); margin-top:6px; line-height:1.45; }
+  .block.active{ background:var(--ink); color:var(--bg); }
+  .block.active h3,.block.active .note{ color:var(--soft); }
+  .block.active .num{ background:var(--bg); color:var(--ink); }
+  .block.dash{ border-style:dashed; border-color:var(--muted); }
+  .flow{ text-align:center; font-size:12px; color:var(--muted); letter-spacing:.1em; margin:9px 0 0; }
+  .tbl{ border:var(--frame) solid var(--ink); display:grid; }
+  .tbl div{ padding:8px 12px; border-right:var(--frame) solid var(--soft); font-size:13px; }
+  .tbl div:last-child{ border-right:none; }
+  .tbl .hd{ background:var(--hair); font-size:10px; text-transform:uppercase; letter-spacing:.15em; color:var(--muted); }
+  .tbl .rh{ color:var(--muted); font-size:12px; letter-spacing:.05em; }
+  .tbl .inv{ background:var(--ink); color:var(--bg); }
+  .tbl .br{ border-top:var(--frame) solid var(--soft); }
+  footer{ display:grid; grid-template-columns:1fr auto; align-items:baseline; gap:22px;
+    border-top:var(--frame) solid var(--ink); padding-top:12px; margin-top:6px;
+    color:var(--muted); font-size:12px; letter-spacing:.05em; }
+  footer b{ color:var(--ink); font-weight:500; }
+  .chips{ display:inline-flex; gap:6px; margin-left:10px; }
+  .chips span{ border:var(--frame) solid var(--soft); padding:1px 7px; font-size:11px; }
+  .chips span.on{ background:var(--ink); color:var(--bg); border-color:var(--ink); }
+  .dot{ display:inline-block; width:5px; height:5px; background:var(--flow); border-radius:50%;
+    vertical-align:middle; margin-left:6px; }
+</style></head><body>
+<header><span class="brand">shaper</span>
+<span class="crumb">fig.gat · механика срабатывания · что происходит в секунду, когда контекст нужен</span>
+<span class="meta">guide/ · <b>ai mindset</b> · 2026-07-30</span></header>
+<div class="band"><p class="band-label">почему записанное правило проигрывает</p><div class="row" style="grid-template-columns:1fr 1fr"><div class="block "><span class="num">a</span><h3>текст</h3><div class="lead">читается один раз на старте</div><div class="note">дальше конкурирует за внимание со всем остальным. в момент, когда правило понадобилось, внимание занято задачей — поэтому правило и нарушается</div></div><div class="block active"><span class="num">b</span><h3>проверка в действии</h3><div class="lead">срабатывает независимо от памяти</div><div class="note">не подчиняется вниманию, потому что стоит на пути руки, а не в голове</div></div></div></div><p class="flow">замер: 114 файлов с разборами своих ошибок против 3 останавливающих проверок · в один день три промаха из четырёх были покрыты правилами, лежавшими в контексте в ту же секунду</p><div class="band"><p class="band-label">четыре типа срабатывания · от мягкого к жёсткому, первые два без всякой инфраструктуры</p><div class="row" style="grid-template-columns:repeat(4,1fr)"><div class="block "><span class="num">1</span><h3>тема забывается</h3><div class="lead">подсказка перед действием</div><div class="note">показывает нужный кусок в момент начала работы</div></div><div class="block "><span class="num">2</span><h3>решение на автомате</h3><div class="lead">вопрос вместо действия</div><div class="note">требует ответить до продолжения</div></div><div class="block "><span class="num">3</span><h3>цена ошибки высокая</h3><div class="lead">запрет с объяснением</div><div class="note">не даёт выполнить и говорит почему</div></div><div class="block "><span class="num">4</span><h3>дисциплина не держится</h3><div class="lead">автозапись факта</div><div class="note">сам фиксирует то, что человек забывает</div></div></div></div><div class="band"><p class="band-label">разбор собственной ошибки · пять шагов, пятый обязателен</p><div class="row" style="grid-template-columns:repeat(5,1fr)"><div class="block "><h3>шаг 1</h3><div class="lead">что пошло не так</div><div class="note">факт без интерпретации</div></div><div class="block "><h3>шаг 2</h3><div class="lead">было ли правило</div><div class="note">существовало ли оно вообще</div></div><div class="block "><h3>шаг 3</h3><div class="lead">правило было и не сработало</div><div class="note">значит проблема не в правиле</div></div><div class="block "><h3>шаг 4</h3><div class="lead">что остановит руку</div><div class="note">механика вместо формулировки</div></div><div class="block active"><h3>шаг 5</h3><div class="lead">механики нет — сказать вслух</div><div class="note">«здесь только текст». осознанный выбор работает, забывчивость нет</div></div></div></div>
+<footer><span>разделы гайда<span class="chips"><span class="">старт</span><span class="">источники</span><span class="">слои</span><span class="">волт</span><span class="">грабли</span><span class="">безопасность</span><span class="">примеры</span><span class="">поколения</span><span class="on">гейты</span><span class="">отказы</span></span></span>
+<span><b>guide/09-gates.md</b></span></footer>
+</body></html>
