@@ -1,0 +1,7 @@
+{
+  "name": "flow-compass",
+  "description": "Компас продуктивности для лаборатории AI Mindset S26 {flow}: диагностика → личный фреймворк ценностей → определение продуктивности → еженедельный трекинг и ИИ-аудит автоматизаций",
+  "version": "0.2.0",
+  "author": { "name": "Daria Voronkina (@aishipuchka)" },
+  "homepage": "https://aishipuchka.com/"
+}
