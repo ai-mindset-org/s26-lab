@@ -27,7 +27,7 @@ S26 {flow} собрана для фаундеров и практиков, у к
 | **#1** | 23.07 | Дарья Воронкина · автор канала «AI-шипучка» | [Founder OS #37](https://youtu.be/AXq8yW97FrU) | [`artifacts/flow-compass/`](artifacts/flow-compass/) — плагин-компас продуктивности, собранный вживую в эфире |
 | **#2** | 30.07 | Александр Васильев · создатель JARVIS | [Founder OS #38](https://youtu.be/KVihbZL0oB8) | [`guide/`](guide/) — рабочий гайд по сборке личного контекста, десять разделов со схемами |
 | **#3** | 05.08 | Кирилл Олейниченко · «Оди», «Журналус», «Адовый UX» | [s26.aimindset.org](https://s26.aimindset.org/) | [`artifacts/kirill-system/`](artifacts/kirill-system/) — шаблоны личной конституции ZTD, восемь слоёв |
-| **#4** | 06.08 | Серёжа Рис · personal corp, a2a | [s26.aimindset.org](https://s26.aimindset.org/) | добавляется |
+| **#4** | 06.08 | Серёжа Рис · personal corp, a2a | [s26.aimindset.org](https://s26.aimindset.org/) | [`artifacts/personal-corp/`](artifacts/personal-corp/) – недельный цикл планирования и ретро с агентом |
 
 как это выглядело: доступ к репозиторию выдавался гостю прямо в эфире, его агент собирал артефакт в реальном времени, PR открывался и мержился при зрителях. артефакт эфира #3 родился за те же девяносто минут, что шёл сам эфир.
 
