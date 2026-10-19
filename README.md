@@ -1,5 +1,9 @@
 # AI Mindset · Summer Lab S26 {flow}
 
+Архив летней лабы S26: программа и открытые артефакты августа 2026 года.
+
+[Текущие программы AI Mindset](https://aimindset.org/?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-s26-lab) · [База знаний и практик](https://base.aimindset.org/?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-s26-lab-base)
+
 **поток в эпоху агентов.** трёхнедельная лаборатория, где практики собирают из своего контекста и своих агентов устойчивую рабочую систему и выносят один работающий инструмент.
 
 **сайт лабы → [s26.aimindset.org](https://s26.aimindset.org/)** · 10–31 августа 2026
