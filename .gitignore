@@ -1,2 +1,3 @@
 .DS_Store
 incidents/*/raw/
+.worktrees/
