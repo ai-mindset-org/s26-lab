@@ -8,7 +8,7 @@
 
 **поток в эпоху агентов.** трёхнедельная лаборатория, где практики собирают из своего контекста и своих агентов устойчивую рабочую систему и выносят один работающий инструмент.
 
-**сайт лабы → [s26.aimindset.org](https://s26.aimindset.org/)**?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-s26-lab · 10–31 августа 2026
+**сайт лабы → [s26.aimindset.org](https://s26.aimindset.org/?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-s26-lab)** · 10–31 августа 2026
 
 ![как собирается лаба и её сайт](assets/s26-lab-map.png)
 
@@ -98,7 +98,7 @@ S26 {flow} собрана для фаундеров и практиков, у к
 
 прочерк значит, что хендл ещё не сверен с человеком, а не что его нет. так же устроены и артефакты: пустая строка честнее выдуманной.
 
-**актуальные даты и живое расписание — на [сайте лабы](https://s26.aimindset.org/).**?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-s26-lab
+**актуальные даты и живое расписание — на [сайте лабы](https://s26.aimindset.org/?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-s26-lab).**
 
 ---
 

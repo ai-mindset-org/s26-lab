@@ -1,6 +1,6 @@
 # программа · S26 {flow}
 
-> три недели, **10–31 августа 2026**. спринт-рамка, не резиденция. это публичная версия: структура, дуга и выходы недель. точные часы, состав каждой сессии и живое расписание — на **[s26.aimindset.org](https://s26.aimindset.org/)**?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-s26-lab.
+> три недели, **10–31 августа 2026**. спринт-рамка, не резиденция. это публичная версия: структура, дуга и выходы недель. точные часы, состав каждой сессии и живое расписание — на **[s26.aimindset.org](https://s26.aimindset.org/?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-s26-lab)**.
 
 ## дуга: шесть элементов
 
@@ -142,6 +142,6 @@
 
 прочерк значит, что хендл ещё не сверен с человеком, а не что его нет.
 
-**актуальные даты и живое расписание — на [сайте лабы](https://s26.aimindset.org/).**?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-s26-lab
+**актуальные даты и живое расписание — на [сайте лабы](https://s26.aimindset.org/?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-s26-lab).**
 
 проводник приносит свой блок сюда сам — как это сделать, описано в [`CONTRIBUTING.md`](../CONTRIBUTING.md).
