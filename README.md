@@ -1,12 +1,14 @@
 # AI Mindset · Summer Lab S26 {flow}
 
-Архив летней лабы S26: программа и открытые артефакты августа 2026 года.
+<!-- aim-public-links:start -->
+[Лабы AI Mindset](https://aimindset.org/?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-s26-lab#learning) · [База знаний](https://base.aimindset.org/?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-s26-lab)
+<!-- aim-public-links:end -->
 
-[Текущие программы AI Mindset](https://aimindset.org/?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-s26-lab) · [База знаний и практик](https://base.aimindset.org/?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-s26-lab-base)
+Архив летней лабы S26: программа и открытые артефакты августа 2026 года.
 
 **поток в эпоху агентов.** трёхнедельная лаборатория, где практики собирают из своего контекста и своих агентов устойчивую рабочую систему и выносят один работающий инструмент.
 
-**сайт лабы → [s26.aimindset.org](https://s26.aimindset.org/)** · 10–31 августа 2026
+**сайт лабы → [s26.aimindset.org](https://s26.aimindset.org/)**?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-s26-lab · 10–31 августа 2026
 
 ![как собирается лаба и её сайт](assets/s26-lab-map.png)
 
@@ -30,8 +32,8 @@ S26 {flow} собрана для фаундеров и практиков, у к
 |------|------|-------|--------|----------------------------|
 | **#1** | 23.07 | Дарья Воронкина · автор канала «AI-шипучка» | [Founder OS #37](https://youtu.be/AXq8yW97FrU) | [`artifacts/flow-compass/`](artifacts/flow-compass/) — плагин-компас продуктивности, собранный вживую в эфире |
 | **#2** | 30.07 | Александр Васильев · создатель JARVIS | [Founder OS #38](https://youtu.be/KVihbZL0oB8) | [`guide/`](guide/) — материал временно снят с публикации после проверки границы публичности |
-| **#3** | 05.08 | Кирилл Олейниченко · «Оди», «Журналус», «Адовый UX» | [s26.aimindset.org](https://s26.aimindset.org/) | [`artifacts/kirill-system/`](artifacts/kirill-system/) — шаблоны личной конституции ZTD, восемь слоёв |
-| **#4** | 06.08 | Серёжа Рис · personal corp, a2a | [s26.aimindset.org](https://s26.aimindset.org/) | [`artifacts/personal-corp/`](artifacts/personal-corp/) – недельный цикл планирования и ретро с агентом |
+| **#3** | 05.08 | Кирилл Олейниченко · «Оди», «Журналус», «Адовый UX» | [s26.aimindset.org](https://s26.aimindset.org/?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-s26-lab) | [`artifacts/kirill-system/`](artifacts/kirill-system/) — шаблоны личной конституции ZTD, восемь слоёв |
+| **#4** | 06.08 | Серёжа Рис · personal corp, a2a | [s26.aimindset.org](https://s26.aimindset.org/?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-s26-lab) | [`artifacts/personal-corp/`](artifacts/personal-corp/) – недельный цикл планирования и ретро с агентом |
 
 как это выглядело: доступ к репозиторию выдавался гостю прямо в эфире, его агент собирал артефакт в реальном времени, PR открывался и мержился при зрителях. артефакт эфира #3 родился за те же девяносто минут, что шёл сам эфир.
 
@@ -96,7 +98,7 @@ S26 {flow} собрана для фаундеров и практиков, у к
 
 прочерк значит, что хендл ещё не сверен с человеком, а не что его нет. так же устроены и артефакты: пустая строка честнее выдуманной.
 
-**актуальные даты и живое расписание — на [сайте лабы](https://s26.aimindset.org/).**
+**актуальные даты и живое расписание — на [сайте лабы](https://s26.aimindset.org/).**?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-s26-lab
 
 ---
 

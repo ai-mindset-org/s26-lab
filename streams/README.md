@@ -10,8 +10,8 @@
 |---|------|-------|------|--------|----------|
 | **1** | 23.07 | Дарья Воронкина | почему ai-инструменты не сделали рабочую систему легче | [Founder OS #37](https://youtu.be/AXq8yW97FrU) | [`artifacts/flow-compass/`](../artifacts/flow-compass/) |
 | **2** | 30.07 | Александр Васильев | личная система как инфраструктура: контекст, память, доступ | [Founder OS #38](https://youtu.be/KVihbZL0oB8) | [`guide/`](../guide/) |
-| **3** | 05.08 | Кирилл Олейниченко | личная конституция, медиапоток и делегирование | [сайт лабы](https://s26.aimindset.org/) | [`artifacts/kirill-system/`](../artifacts/kirill-system/) |
-| **4** | 06.08 | Серёжа Рис | a2a / personal corp: агентный цикл и человеческая приёмка | [сайт лабы](https://s26.aimindset.org/) | добавляется |
+| **3** | 05.08 | Кирилл Олейниченко | личная конституция, медиапоток и делегирование | [сайт лабы](https://s26.aimindset.org/?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-s26-lab) | [`artifacts/kirill-system/`](../artifacts/kirill-system/) |
+| **4** | 06.08 | Серёжа Рис | a2a / personal corp: агентный цикл и человеческая приёмка | [сайт лабы](https://s26.aimindset.org/?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-s26-lab) | добавляется |
 
 ## что происходило в каждом
 
@@ -41,4 +41,4 @@
 - зритель успевает что-то запустить у себя прямо во время сессии;
 - **каждый эфир заканчивается артефактом** с названным владельцем и сроком.
 
-*внутри самой лабы есть дополнительные гостевые сегменты и практикумы — они анонсируются на [сайте лабы](https://s26.aimindset.org/) отдельно.*
+*внутри самой лабы есть дополнительные гостевые сегменты и практикумы — они анонсируются на [сайте лабы](https://s26.aimindset.org/?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-s26-lab) отдельно.*
