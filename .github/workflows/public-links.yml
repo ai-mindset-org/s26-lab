@@ -9,4 +9,4 @@ permissions:
 jobs:
   links:
     if: github.repository_owner == 'ai-mindset-org'
-    uses: ai-mindset-org/.github/.github/workflows/public-links-reusable.yml@f4fbfb8b2f475660ebc5226603811df10360a81e
+    uses: ai-mindset-org/.github/.github/workflows/public-links-reusable.yml@942ac8b126766c50437ed3fabaa3860c831666b1
